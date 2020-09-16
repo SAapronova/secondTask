@@ -6,10 +6,11 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Main {
+    static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
+
         System.out.print("Введите число...:");
         int num = in.nextInt();
         System.out.println("Задание № 1:  " + lastNumber(num));
@@ -20,14 +21,9 @@ public class Main {
 
         System.out.println("Задание № 4:  " + fourthTask(num));
 
-        System.out.println("Введите положительное число 1:  ");
-        int firstnum = in.nextInt();
-        System.out.println("Введите положительное число 2:  ");
-        int secondnum = in.nextInt();
-        System.out.println("Введите положительное число 3:  ");
-        int thirdnum = in.nextInt();
-        System.out.println("Задание № 5:  " );
-        fifthTask(firstnum,secondnum,thirdnum);
+        System.out.println("Задание № 5:  " +fifthTask());
+
+
 
         System.out.println("Задание № 6:  ");
         SignDetermination(num);
@@ -87,14 +83,43 @@ public class Main {
 
     }
 
-    static void fifthTask(int fistnum, int secondnum, int thirdnum) {
+    static int[] arrayCreator() {
 
-        if (fistnum <= secondnum && fistnum <= thirdnum)
-            System.out.println(fistnum + " наименьшее число");
-        else if (secondnum <= fistnum && secondnum <= thirdnum)
-            System.out.println(secondnum + " наименьшее число");
-        else
-            System.out.println(thirdnum + " наименьшее число");
+      int[]array=new int[3];
+      for(int i=0;i<3;i++) {
+          System.out.println("Введите число...");
+          int num=in.nextInt();
+          array[i]=num;
+      }
+      return array;
+
+    }
+
+    static int minElement(int[] array) {
+
+        int temp;
+        int j;
+        for (int i = 0; i < array.length; i++)
+        {
+            for (j = i + 1; j < array.length; j++)
+            {
+                if (array[i] > array[j] )
+                {
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            if (j == array.length) {
+                break;
+            }
+        }
+        return array[0];
+    }
+
+    static int fifthTask() {
+        int []array=arrayCreator();
+        return minElement(array);
     }
 
     static void SignDetermination(int num) {
