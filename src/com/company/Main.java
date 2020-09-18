@@ -97,7 +97,7 @@ public class Main {
 
     static int minElement(int[] array) {
 
-        int temp;
+     /*  int temp;
         int j;
         for (int i = 0; i < array.length; i++)
         {
@@ -115,6 +115,34 @@ public class Main {
             }
         }
         return array[0];
+    }*/
+
+
+        int min = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            int x = array[i];
+            int y = array[i + 1];
+
+            if (x < y) {
+                if (i == 0) {
+                    min = x;
+                } else {
+                    if (min > x) {
+                        min = x;
+                    }
+                }
+            }
+            else {
+                if (i == 0) {
+                    min = y;
+                } else {
+                    if (min > y) {
+                        min = y;
+                    }
+                }
+            }
+        }
+        return min;
     }
 
     static int fifthTask() {
